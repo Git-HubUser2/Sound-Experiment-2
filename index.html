@@ -4,89 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Musical Note Player</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    #noteDisplay {
-      font-size: 3rem;
-      margin: 20px;
-    }
-    #currentNumber {
-      font-size: 1.5rem;
-      margin: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      margin: 10px;
-    }
-    input {
-      font-size: 1rem;
-      padding: 5px;
-      margin: 10px;
-    }
-  </style>
 </head>
 <body>
-
-  <h1>Musical Note Player</h1>
 
   <div id="noteDisplay">C</div>
   <div id="currentNumber">Note: 1</div>
 
   <button id="playPauseBtn">Play</button>
-
-  <br>
-
+  
   <input type="number" id="jumpToInput" placeholder="Enter note number (1-7)">
   <button id="jumpBtn">Jump</button>
 
   <script>
-// script.js
+    // Function to toggle between play and pause
+    let isPlaying = false;
+    let noteIndex = 0;
+    const notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];  // Example musical notes
 
-// Function to toggle between play and pause
-let isPlaying = false;
-let noteIndex = 0;
-const notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];  // Example musical notes
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const noteDisplay = document.getElementById('noteDisplay');
+    const currentNumber = document.getElementById('currentNumber');
 
-const playPauseBtn = document.getElementById('playPauseBtn');
-const noteDisplay = document.getElementById('noteDisplay');
-const currentNumber = document.getElementById('currentNumber');
+    // Toggle play/pause
+    playPauseBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      playPauseBtn.textContent = isPlaying ? 'Pause' : 'Play';
+      if (isPlaying) {
+        playNextNote();
+      }
+    });
 
-// Toggle play/pause
-playPauseBtn.addEventListener('click', () => {
-  isPlaying = !isPlaying;
-  playPauseBtn.textContent = isPlaying ? 'Pause' : 'Play';
-  if (isPlaying) {
-    playNextNote();
-  }
-});
+    // Function to play the next note in the sequence
+    function playNextNote() {
+      if (isPlaying) {
+        noteDisplay.textContent = notes[noteIndex];
+        currentNumber.textContent = `Note: ${noteIndex + 1}`;
+        noteIndex = (noteIndex + 1) % notes.length;
 
-// Function to play the next note in the sequence
-function playNextNote() {
-  if (isPlaying) {
-    noteDisplay.textContent = notes[noteIndex];
-    currentNumber.textContent = `Note: ${noteIndex + 1}`;
-    noteIndex = (noteIndex + 1) % notes.length;
+        setTimeout(playNextNote, 1000); // Change note every 1 second
+      }
+    }
 
-    setTimeout(playNextNote, 1000); // Change note every 1 second
-  }
-}
-
-// Jump to specific note
-document.getElementById('jumpBtn').addEventListener('click', () => {
-  const jumpToInput = document.getElementById('jumpToInput');
-  const targetNote = parseInt(jumpToInput.value) - 1; // 1-indexed to 0-indexed
-  if (targetNote >= 0 && targetNote < notes.length) {
-    noteIndex = targetNote;
-    noteDisplay.textContent = notes[noteIndex];
-    currentNumber.textContent = `Note: ${noteIndex + 1}`;
-  }
-});
+    // Jump to specific note
+    document.getElementById('jumpBtn').addEventListener('click', () => {
+      const jumpToInput = document.getElementById('jumpToInput');
+      const targetNote = parseInt(jumpToInput.value) - 1; // 1-indexed to 0-indexed
+      if (targetNote >= 0 && targetNote < notes.length) {
+        noteIndex = targetNote;
+        noteDisplay.textContent = notes[noteIndex];
+        currentNumber.textContent = `Note: ${noteIndex + 1}`;
+      }
+    });
   </script>
 
 </body>
