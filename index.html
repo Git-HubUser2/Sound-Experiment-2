@@ -7,34 +7,26 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f4f4f9;
-    }
-    h1 {
-      color: #333;
+      text-align: center;
+      padding: 20px;
     }
     #noteDisplay {
-      font-size: 2rem;
+      font-size: 3rem;
       margin: 20px;
-      color: #5a5a5a;
     }
     #currentNumber {
-      font-size: 1.2rem;
-      color: #888;
+      font-size: 1.5rem;
+      margin: 20px;
     }
     button {
-      font-size: 1rem;
       padding: 10px 20px;
-      margin: 10px;
+      font-size: 1rem;
       cursor: pointer;
+      margin: 10px;
     }
     input {
-      padding: 5px;
       font-size: 1rem;
+      padding: 5px;
       margin: 10px;
     }
   </style>
@@ -42,14 +34,15 @@
 <body>
 
   <h1>Musical Note Player</h1>
-  
+
   <div id="noteDisplay">C</div>
   <div id="currentNumber">Note: 1</div>
-  
+
   <button id="playPauseBtn">Play</button>
+
   <br>
-  <label for="jumpToInput">Jump to note:</label>
-  <input type="number" id="jumpToInput" min="1" max="7" placeholder="1-7">
+
+  <input type="number" id="jumpToInput" placeholder="Enter note number (1-7)">
   <button id="jumpBtn">Jump</button>
 
   <script src="script.js"></script>
