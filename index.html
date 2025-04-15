@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musical Note Player</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+    }
+    h1 {
+      color: #333;
+    }
+    #noteDisplay {
+      font-size: 2rem;
+      margin: 20px;
+      color: #5a5a5a;
+    }
+    #currentNumber {
+      font-size: 1.2rem;
+      color: #888;
+    }
+    button {
+      font-size: 1rem;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    input {
+      padding: 5px;
+      font-size: 1rem;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Musical Note Player</h1>
+  
+  <div id="noteDisplay">C</div>
+  <div id="currentNumber">Note: 1</div>
+  
+  <button id="playPauseBtn">Play</button>
+  <br>
+  <label for="jumpToInput">Jump to note:</label>
+  <input type="number" id="jumpToInput" min="1" max="7" placeholder="1-7">
+  <button id="jumpBtn">Jump</button>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
